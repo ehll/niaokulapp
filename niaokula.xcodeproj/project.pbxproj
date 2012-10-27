@@ -23,6 +23,7 @@
 		873122A6163A652800812ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87312281163A652800812ECA /* Foundation.framework */; };
 		873122AE163A652800812ECA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 873122AC163A652800812ECA /* InfoPlist.strings */; };
 		873122B1163A652800812ECA /* niaokulaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 873122B0163A652800812ECA /* niaokulaTests.m */; };
+		873122BC163A69A400812ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873122BB163A69A400812ECA /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		873122AD163A652800812ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873122AF163A652800812ECA /* niaokulaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = niaokulaTests.h; sourceTree = "<group>"; };
 		873122B0163A652800812ECA /* niaokulaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = niaokulaTests.m; sourceTree = "<group>"; };
+		873122BA163A69A400812ECA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		873122BB163A69A400812ECA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				87312297163A652800812ECA /* ViewController.h */,
 				87312298163A652800812ECA /* ViewController.m */,
 				8731229A163A652800812ECA /* ViewController.xib */,
+				873122BA163A69A400812ECA /* LoginViewController.h */,
+				873122BB163A69A400812ECA /* LoginViewController.m */,
 				87312286163A652800812ECA /* Supporting Files */,
 			);
 			path = niaokula;
@@ -273,6 +278,7 @@
 				8731228C163A652800812ECA /* main.m in Sources */,
 				87312290163A652800812ECA /* AppDelegate.m in Sources */,
 				87312299163A652800812ECA /* ViewController.m in Sources */,
+				873122BC163A69A400812ECA /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
