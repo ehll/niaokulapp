@@ -10,6 +10,7 @@
 #import "NSDictionary+URLQuery.h"
 
 NSString * const kPostURL = @"https://www.niaowo.me/topics";
+NSString * const kReplyURL = @"https://www.niaowo.me/comments";
 
 @interface PostViewController ()
 
@@ -22,7 +23,7 @@ NSString * const kPostURL = @"https://www.niaowo.me/topics";
 - (void)postAction:(id)sender
 {
   NSString *title = [self.titleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  if ([title length] == 0) {
+  if ([title length] == 0 && _postType == PostTypeNew) {
     return;
   }
   NSString *content = [[self.contentField text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -30,9 +31,21 @@ NSString * const kPostURL = @"https://www.niaowo.me/topics";
     return;
   }
   
-  NSURL *url = [NSURL URLWithString:kPostURL];
+  NSURL *url = nil;
+  NSDictionary *params = nil;
+  if (_postType == PostTypeNew) {
+    url = [NSURL URLWithString:kPostURL];
+    params = @{@"title" : title,@"body":content};
+  } else if (_postType == PostTypeReply) {
+    NSAssert(_topicId, @"incorrect topic id");
+    url = [NSURL URLWithString:kReplyURL];
+    params = @{@"topic" : _topicId,@"body":content};
+  }
+  
+  NSAssert(url, @"incorrect post type nil url.");
+  [NSURL URLWithString:kPostURL];
+  
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-  NSDictionary *params = @{@"title" : title,@"body":content};
   NSData *body = [[params queryString] dataUsingEncoding:NSUTF8StringEncoding];
   [request setHTTPMethod:@"POST"];
   NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
@@ -43,13 +56,15 @@ NSString * const kPostURL = @"https://www.niaowo.me/topics";
                                      queue:[NSOperationQueue mainQueue]
                          completionHandler:^(NSURLResponse *response,NSData *data,NSError *err){
                            NSLog(@"%@",response);
+                           NSHTTPURLResponse *httpres = (NSHTTPURLResponse *)response;
                            NSString *responseString = [[NSString alloc] initWithData:data
                                                                             encoding:NSUTF8StringEncoding];
                            NSLog(@"data:%@",responseString);
                            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
                                                                                   options:NSJSONReadingAllowFragments
                                                                                     error:nil];
-                           if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
+//                           if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
+                           if([httpres statusCode] == 200){
                              dispatch_async(dispatch_get_main_queue(), ^(){
 //                               [appDelegate showMain];
                                [self dismissModalViewControllerAnimated:YES];
@@ -85,7 +100,14 @@ NSString * const kPostURL = @"https://www.niaowo.me/topics";
                                                                             target:self
                                                                             action:@selector(postAction:)];
   self.navigationItem.rightBarButtonItem = postItem;
-  self.contentField.backgroundColor = [UIColor lightGrayColor];
+  if (_postType == PostTypeReply) {
+    self.titleField.hidden = YES;
+    CGRect frame = self.titleField.frame;
+    frame.size.height = 0;
+    self.titleField.frame = frame;
+  } else if (_postType == PostTypeNew) {
+    self.titleField.hidden = NO;
+  }
 }
 
 - (void)didReceiveMemoryWarning

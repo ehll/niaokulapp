@@ -7,12 +7,14 @@
 //
 
 #import "TopicViewController.h"
+#import "PostViewController.h"
 
 @interface TopicViewController ()
 
 @property (nonatomic, strong) NSDictionary *contents;
 
 - (void)reloadData;
+- (void)replyAction:(id)sender;
 
 @end
 
@@ -70,6 +72,21 @@
   [self.contentView loadHTMLString:httpString baseURL:nil];
 }
 
+- (void)replyAction:(id)sender
+{
+  PostViewController *viewCtr = [[PostViewController alloc] initWithNibName:@"PostViewController"
+                                                                     bundle:nil];
+  viewCtr.postType = PostTypeReply;
+  viewCtr.topicId = self.topicId;
+  UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewCtr];
+//  [self.navigationController presentModalViewController:nav animated:YES];
+  [self.navigationController presentViewController:nav
+                                          animated:YES
+                                        completion:^(){
+                                          NSLog(@"com");
+                                        }];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -84,6 +101,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
   [self refreshAction:nil];
+  UIBarButtonItem *replyButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                               target:self
+                                                                               action:@selector(replyAction:)];
+  self.navigationItem.rightBarButtonItem= replyButton;
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,8 +12,8 @@
 #import "ViewController.h"
 #import "LoginViewController.h"
 
-const NSString *kAPIKey = @"7a668c3ce74f4123bbdd729f2a241b1a";
-const NSString *kAPISecret = @"dcea8f0378ab4b428b20ffaadd103d7e";
+NSString * const kAPIKey = @"7a668c3ce74f4123bbdd729f2a241b1a";
+NSString * const kAPISecret = @"dcea8f0378ab4b428b20ffaadd103d7e";
 
 @implementation AppDelegate
 

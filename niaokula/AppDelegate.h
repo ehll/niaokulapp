@@ -11,8 +11,9 @@
 #import <UIKit/UIKit.h>
 
 
-extern const NSString *kAPIKey;
-extern const NSString *kAPISecret;
+extern NSString * const kAPIKey;
+extern NSString * const kAPISecret;
+
 @class ViewController;
 @class LoginViewController;
 
