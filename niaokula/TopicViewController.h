@@ -1,5 +1,5 @@
 //
-//  LoginViewController.h
+//  TopicViewController.h
 //  niaokula
 //
 //  Created by he on 12-10-27.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface TopicViewController : UIViewController
 
 @end

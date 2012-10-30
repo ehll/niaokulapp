@@ -1,18 +1,18 @@
 //
-//  LoginViewController.m
+//  PostViewController.m
 //  niaokula
 //
 //  Created by he on 12-10-27.
 //  Copyright (c) 2012年 he. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "PostViewController.h"
 
-@interface LoginViewController ()
+@interface PostViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation PostViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

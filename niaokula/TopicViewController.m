@@ -1,18 +1,18 @@
 //
-//  LoginViewController.m
+//  TopicViewController.m
 //  niaokula
 //
 //  Created by he on 12-10-27.
 //  Copyright (c) 2012年 he. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "TopicViewController.h"
 
-@interface LoginViewController ()
+@interface TopicViewController ()
 
 @end
 
-@implementation LoginViewController
+@implementation TopicViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
