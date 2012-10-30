@@ -9,8 +9,8 @@
 #import "PostViewController.h"
 #import "NSDictionary+URLQuery.h"
 
-NSString * const kPostURL = @"https://www.niaowo.me/topics";
-NSString * const kReplyURL = @"https://www.niaowo.me/comments";
+NSString * const kPostURL = @"https://www.niaowo.me/topics.json";
+NSString * const kReplyURL = @"https://www.niaowo.me/comments.json";
 
 @interface PostViewController ()
 
