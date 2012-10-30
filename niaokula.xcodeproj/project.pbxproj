@@ -23,7 +23,14 @@
 		873122A6163A652800812ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87312281163A652800812ECA /* Foundation.framework */; };
 		873122AE163A652800812ECA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 873122AC163A652800812ECA /* InfoPlist.strings */; };
 		873122B1163A652800812ECA /* niaokulaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 873122B0163A652800812ECA /* niaokulaTests.m */; };
-		873122BC163A69A400812ECA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873122BB163A69A400812ECA /* LoginViewController.m */; };
+		879ADC2F163BAFEA000AA418 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879ADC2D163BAFEA000AA418 /* LoginViewController.m */; };
+		879ADC30163BAFEA000AA418 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879ADC2E163BAFEA000AA418 /* LoginViewController.xib */; };
+		879ADC76163BC167000AA418 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879ADC74163BC166000AA418 /* PostViewController.m */; };
+		879ADC77163BC167000AA418 /* PostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879ADC75163BC166000AA418 /* PostViewController.xib */; };
+		879ADC7B163BC17F000AA418 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879ADC79163BC17F000AA418 /* TopicViewController.m */; };
+		879ADC7C163BC17F000AA418 /* TopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879ADC7A163BC17F000AA418 /* TopicViewController.xib */; };
+		879EEA34163F80760013700B /* NSDictionary+URLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 879EEA33163F80760013700B /* NSDictionary+URLQuery.m */; };
+		879EEA37163F810D0013700B /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = 879EEA36163F810D0013700B /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +66,19 @@
 		873122AD163A652800812ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873122AF163A652800812ECA /* niaokulaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = niaokulaTests.h; sourceTree = "<group>"; };
 		873122B0163A652800812ECA /* niaokulaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = niaokulaTests.m; sourceTree = "<group>"; };
-		873122BA163A69A400812ECA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		873122BB163A69A400812ECA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		879ADC2C163BAFEA000AA418 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		879ADC2D163BAFEA000AA418 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		879ADC2E163BAFEA000AA418 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		879ADC73163BC166000AA418 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		879ADC74163BC166000AA418 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		879ADC75163BC166000AA418 /* PostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostViewController.xib; sourceTree = "<group>"; };
+		879ADC78163BC17F000AA418 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
+		879ADC79163BC17F000AA418 /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
+		879ADC7A163BC17F000AA418 /* TopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicViewController.xib; sourceTree = "<group>"; };
+		879EEA32163F80760013700B /* NSDictionary+URLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+URLQuery.h"; sourceTree = "<group>"; };
+		879EEA33163F80760013700B /* NSDictionary+URLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+URLQuery.m"; sourceTree = "<group>"; };
+		879EEA35163F810D0013700B /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		879EEA36163F810D0013700B /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +138,21 @@
 		87312285163A652800812ECA /* niaokula */ = {
 			isa = PBXGroup;
 			children = (
+				879EEA31163F80510013700B /* Categories */,
 				8731228E163A652800812ECA /* AppDelegate.h */,
 				8731228F163A652800812ECA /* AppDelegate.m */,
 				87312297163A652800812ECA /* ViewController.h */,
 				87312298163A652800812ECA /* ViewController.m */,
 				8731229A163A652800812ECA /* ViewController.xib */,
-				873122BA163A69A400812ECA /* LoginViewController.h */,
-				873122BB163A69A400812ECA /* LoginViewController.m */,
+				879ADC78163BC17F000AA418 /* TopicViewController.h */,
+				879ADC79163BC17F000AA418 /* TopicViewController.m */,
+				879ADC7A163BC17F000AA418 /* TopicViewController.xib */,
+				879ADC2C163BAFEA000AA418 /* LoginViewController.h */,
+				879ADC2D163BAFEA000AA418 /* LoginViewController.m */,
+				879ADC2E163BAFEA000AA418 /* LoginViewController.xib */,
+				879ADC73163BC166000AA418 /* PostViewController.h */,
+				879ADC74163BC166000AA418 /* PostViewController.m */,
+				879ADC75163BC166000AA418 /* PostViewController.xib */,
 				87312286163A652800812ECA /* Supporting Files */,
 			);
 			path = niaokula;
@@ -163,6 +189,17 @@
 				873122AC163A652800812ECA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		879EEA31163F80510013700B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				879EEA32163F80760013700B /* NSDictionary+URLQuery.h */,
+				879EEA33163F80760013700B /* NSDictionary+URLQuery.m */,
+				879EEA35163F810D0013700B /* NSString+URLEncode.h */,
+				879EEA36163F810D0013700B /* NSString+URLEncode.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +278,9 @@
 				87312294163A652800812ECA /* Default@2x.png in Resources */,
 				87312296163A652800812ECA /* Default-568h@2x.png in Resources */,
 				8731229C163A652800812ECA /* ViewController.xib in Resources */,
+				879ADC30163BAFEA000AA418 /* LoginViewController.xib in Resources */,
+				879ADC77163BC167000AA418 /* PostViewController.xib in Resources */,
+				879ADC7C163BC17F000AA418 /* TopicViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +318,11 @@
 				8731228C163A652800812ECA /* main.m in Sources */,
 				87312290163A652800812ECA /* AppDelegate.m in Sources */,
 				87312299163A652800812ECA /* ViewController.m in Sources */,
-				873122BC163A69A400812ECA /* LoginViewController.m in Sources */,
+				879ADC2F163BAFEA000AA418 /* LoginViewController.m in Sources */,
+				879ADC76163BC167000AA418 /* PostViewController.m in Sources */,
+				879ADC7B163BC17F000AA418 /* TopicViewController.m in Sources */,
+				879EEA34163F80760013700B /* NSDictionary+URLQuery.m in Sources */,
+				879EEA37163F810D0013700B /* NSString+URLEncode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +426,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "niaokula/niaokula-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./ytoolkit/**";
 				INFOPLIST_FILE = "niaokula/niaokula-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -393,7 +443,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "niaokula/niaokula-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./ytoolkit/**";
 				INFOPLIST_FILE = "niaokula/niaokula-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -452,6 +508,7 @@
 				873122B6163A652800812ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		873122B7163A652800812ECA /* Build configuration list for PBXNativeTarget "niaokulaTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +517,7 @@
 				873122B9163A652800812ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

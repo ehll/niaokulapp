@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "NSDictionary+URLQuery.h"
+
+static NSString * const kLoginUrl = @"https://www.niaowo.me/account/token";
 
 @interface LoginViewController ()
 
@@ -33,6 +36,46 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)loginAction:(id)sender {
+  NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  if ([username length] == 0) {
+    NSLog(@"fuck username!");
+    [self.usernameField becomeFirstResponder];
+    return;
+  }
+  NSString *pass = [self.passField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  if ([pass length] == 0) {
+    NSLog(@"fuck pass");
+    [self.passField becomeFirstResponder];
+    return;
+  }
+  
+  NSURL *url = [NSURL URLWithString:kLoginUrl];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+  NSDictionary *params = @{@"api_key" : kAPIKey,@"api_secret":kAPISecret,@"username":username,@"password":pass};
+  NSData *body = [[params queryString] dataUsingEncoding:NSUTF8StringEncoding];
+  [request setHTTPMethod:@"POST"];
+  NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+  [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+  [request setHTTPBody:body];
+
+  [NSURLConnection sendAsynchronousRequest:request
+                                     queue:[NSOperationQueue mainQueue]
+                         completionHandler:^(NSURLResponse *response,NSData *data,NSError *err){
+                           NSLog(@"%@",response);
+                           NSString *responseString = [[NSString alloc] initWithData:data
+                                                                            encoding:NSUTF8StringEncoding];
+                           NSLog(@"data:%@",responseString);
+                           NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+                                                                                  options:NSJSONReadingAllowFragments
+                                                                                    error:nil];
+                           if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
+                             dispatch_async(dispatch_get_main_queue(), ^(){
+                               [appDelegate showMain];
+                             });
+                           }
+                         }];
 }
 
 @end

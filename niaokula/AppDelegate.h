@@ -10,14 +10,23 @@
 //  secret是dcea8f0378ab4b428b20ffaadd103d7e
 #import <UIKit/UIKit.h>
 
+
+extern const NSString *kAPIKey;
+extern const NSString *kAPISecret;
 @class ViewController;
+@class LoginViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) LoginViewController *loginViewCtr;
 
 @property (strong, nonatomic) UINavigationController *nav;
 
+- (void)showLogin;
+- (void)showMain;
 @end
+
+#define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)

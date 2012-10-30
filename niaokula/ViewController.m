@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "TopicViewController.h"
 
 @interface ViewController ()
 
@@ -17,12 +19,6 @@
 @end
 
 @implementation ViewController
-
-- (void)loginAction:(id)sender
-{
-  LoginViewController *viewCtr = [[LoginViewController alloc] init];
-  [self.navigationController pushViewController:viewCtr animated:YES];
-}
 
 - (void)refreshAction:(id)sender
 {
@@ -36,14 +32,22 @@
                                                                             encoding:NSUTF8StringEncoding];
                            //                           NSLog(@"data:%@",responseString);
                            if (!err) {
-                             NSArray *arr = [NSJSONSerialization JSONObjectWithData:data
+                             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
                                                                             options:NSJSONReadingMutableContainers
                                                                               error:nil];
-                             self.topics = arr;
-                             NSLog(@"%@",arr);
+                             self.topics = [dict objectForKey:@"topics"];
+                             NSLog(@"%@",dict);
                              dispatch_async(dispatch_get_main_queue(), ^(){ [self.tableView reloadData];});
                            }
-
+                           else {
+                             NSLog(@"data:%@",responseString);
+                             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                                                  options:NSJSONReadingMutableContainers
+                                                                                    error:nil];
+                             if ([dict objectForKey:@"error"]) {
+                               [appDelegate showLogin];
+                             }
+                           }
                            NSLog(@"error:%@",err);}];
 }
 
@@ -51,11 +55,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-  UIBarButtonItem *loginButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                               target:self
-                                                                               action:@selector(loginAction:)];
-  self.navigationItem.leftBarButtonItem = loginButton;
-  
   UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                  target:self
                                                                                  action:@selector(refreshAction:)];
@@ -65,9 +64,10 @@
                                                 style:UITableViewStylePlain];
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
+  self.tableView.backgroundColor = [UIColor clearColor];
   [self.view addSubview:self.tableView];
   
-
+  [self refreshAction:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,12 +95,25 @@
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                   reuseIdentifier:cellIdentifier];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
   }
   NSDictionary *dict = [self.topics objectAtIndex:indexPath.row];
   cell.textLabel.text = [dict objectForKey:@"title"];
-  cell.detailTextLabel.text = [dict objectForKey:@"body"];
+  cell.detailTextLabel.text = [dict objectForKey:@"author"];
   
   return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  NSDictionary *dict = [self.topics objectAtIndex:indexPath.row];
+  NSString *topicId = [NSString stringWithFormat:@"%i",[[dict objectForKey:@"id"] integerValue]];
+  TopicViewController *viewCtr = [[TopicViewController alloc] initWithNibName:@"TopicViewController"
+                                                                       bundle:nil];
+  viewCtr.topicId = topicId;
+  [self.navigationController pushViewController:viewCtr animated:YES];
 }
 
 @end

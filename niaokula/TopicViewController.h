@@ -10,4 +10,7 @@
 
 @interface TopicViewController : UIViewController
 
+@property (nonatomic, copy) NSString *topicId;
+@property (weak, nonatomic) IBOutlet UIWebView *contentView;
+
 @end
