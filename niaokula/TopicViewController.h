@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TopicViewController : UIViewController
+#import "PostViewController.h"
+@interface TopicViewController : UIViewController<PostResulting>
 
 @property (nonatomic, copy) NSString *topicId;
 @property (weak, nonatomic) IBOutlet UIWebView *contentView;

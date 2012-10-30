@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PostViewController.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PostResulting>
 
 @end

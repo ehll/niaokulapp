@@ -67,6 +67,9 @@ NSString * const kReplyURL = @"https://www.niaowo.me/comments";
                            if([httpres statusCode] == 200){
                              dispatch_async(dispatch_get_main_queue(), ^(){
 //                               [appDelegate showMain];
+                               if (self.delegate && [self.delegate respondsToSelector:@selector(refreshData:)]) {
+                                 [self.delegate performSelector:@selector(refreshData:) withObject:result];
+                               }
                                [self dismissModalViewControllerAnimated:YES];
                              });
                            }

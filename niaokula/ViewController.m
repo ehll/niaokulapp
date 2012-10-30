@@ -56,6 +56,7 @@
 {
   PostViewController *viewCtr = [[PostViewController alloc] initWithNibName:@"PostViewController"
                                                                      bundle:nil];
+  viewCtr.delegate = self;
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewCtr];
   [self.navigationController presentModalViewController:nav animated:YES];
 }
@@ -141,6 +142,12 @@
                                                                        bundle:nil];
   viewCtr.topicId = topicId;
   [self.navigationController pushViewController:viewCtr animated:YES];
+}
+
+#pragma mark -
+- (void)refreshData:(NSDictionary *)result
+{
+  [self refreshAction:nil];
 }
 
 @end

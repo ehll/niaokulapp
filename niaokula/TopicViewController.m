@@ -78,13 +78,9 @@
                                                                      bundle:nil];
   viewCtr.postType = PostTypeReply;
   viewCtr.topicId = self.topicId;
+  viewCtr.delegate = self;
   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewCtr];
-//  [self.navigationController presentModalViewController:nav animated:YES];
-  [self.navigationController presentViewController:nav
-                                          animated:YES
-                                        completion:^(){
-                                          NSLog(@"com");
-                                        }];
+  [self.navigationController presentModalViewController:nav animated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -117,4 +113,11 @@
   [self setContentView:nil];
   [super viewDidUnload];
 }
+
+#pragma mark - 
+- (void)refreshData:(NSDictionary *)result
+{
+  [self refreshAction:nil];
+}
+
 @end
