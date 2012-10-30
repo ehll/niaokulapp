@@ -79,12 +79,13 @@
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
                                                                   action:@selector(logoutAction:)];
-  self.navigationItem.rightBarButtonItems = @[refreshButton,logoutButton];
-  
   UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                                                               target:self
                                                                               action:@selector(postAction:)];
-  self.navigationItem.leftBarButtonItem = postButton;
+  
+  self.navigationItem.rightBarButtonItems = postButton;
+  
+  self.navigationItem.leftBarButtonItems = @[refreshButton,logoutButton];
   
   self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                 style:UITableViewStylePlain];
