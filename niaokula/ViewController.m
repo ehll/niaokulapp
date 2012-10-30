@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "TopicViewController.h"
+#import "PostViewController.h"
 
 @interface ViewController ()
 
@@ -51,6 +52,14 @@
                            NSLog(@"error:%@",err);}];
 }
 
+- (void)postAction:(id)sender
+{
+  PostViewController *viewCtr = [[PostViewController alloc] initWithNibName:@"PostViewController"
+                                                                     bundle:nil];
+  UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewCtr];
+  [self.navigationController presentModalViewController:nav animated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,6 +68,11 @@
                                                                                  target:self
                                                                                  action:@selector(refreshAction:)];
   self.navigationItem.rightBarButtonItem = refreshButton;
+  
+  UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                              target:self
+                                                                              action:@selector(postAction:)];
+  self.navigationItem.leftBarButtonItem = postButton;
   
   self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                 style:UITableViewStylePlain];

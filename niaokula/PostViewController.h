@@ -10,4 +10,6 @@
 
 @interface PostViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UITextView *contentField;
 @end

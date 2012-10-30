@@ -7,32 +7,96 @@
 //
 
 #import "PostViewController.h"
+#import "NSDictionary+URLQuery.h"
+
+NSString * const kPostURL = @"https://www.niaowo.me/topics";
 
 @interface PostViewController ()
+
+- (void)postAction:(id)sender;
 
 @end
 
 @implementation PostViewController
 
+- (void)postAction:(id)sender
+{
+  NSString *title = [self.titleField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  if ([title length] == 0) {
+    return;
+  }
+  NSString *content = [[self.contentField text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  if ([content length] == 0) {
+    return;
+  }
+  
+  NSURL *url = [NSURL URLWithString:kPostURL];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+  NSDictionary *params = @{@"title" : title,@"body":content};
+  NSData *body = [[params queryString] dataUsingEncoding:NSUTF8StringEncoding];
+  [request setHTTPMethod:@"POST"];
+  NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+  [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+  [request setHTTPBody:body];
+  
+  [NSURLConnection sendAsynchronousRequest:request
+                                     queue:[NSOperationQueue mainQueue]
+                         completionHandler:^(NSURLResponse *response,NSData *data,NSError *err){
+                           NSLog(@"%@",response);
+                           NSString *responseString = [[NSString alloc] initWithData:data
+                                                                            encoding:NSUTF8StringEncoding];
+                           NSLog(@"data:%@",responseString);
+                           NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
+                                                                                  options:NSJSONReadingAllowFragments
+                                                                                    error:nil];
+                           if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
+                             dispatch_async(dispatch_get_main_queue(), ^(){
+//                               [appDelegate showMain];
+                               [self dismissModalViewControllerAnimated:YES];
+                             });
+                           }
+                         }];
+}
+
+- (void)cancelAction:(id)sender
+{
+  [self dismissModalViewControllerAnimated:YES];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+  }
+  return self;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+  [super viewDidLoad];
+  // Do any additional setup after loading the view from its nib.
+  UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                            target:self
+                                                                            action:@selector(cancelAction:)];
+  self.navigationItem.leftBarButtonItem = backItem;
+  
+  UIBarButtonItem *postItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                            target:self
+                                                                            action:@selector(postAction:)];
+  self.navigationItem.rightBarButtonItem = postItem;
+  self.contentField.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+  [self setTitleField:nil];
+  [self setContentField:nil];
+  [super viewDidUnload];
+}
 @end
