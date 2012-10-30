@@ -83,7 +83,7 @@
                                                                               target:self
                                                                               action:@selector(postAction:)];
   
-  self.navigationItem.rightBarButtonItems = postButton;
+  self.navigationItem.rightBarButtonItem = postButton;
   
   self.navigationItem.leftBarButtonItems = @[refreshButton,logoutButton];
   
