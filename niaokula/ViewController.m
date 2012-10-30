@@ -60,6 +60,14 @@
   [self.navigationController presentModalViewController:nav animated:YES];
 }
 
+- (void)logoutAction:(id)sender
+{
+  for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+  }
+  [appDelegate showLogin];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -67,7 +75,11 @@
   UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                  target:self
                                                                                  action:@selector(refreshAction:)];
-  self.navigationItem.rightBarButtonItem = refreshButton;
+  UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"logout"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(logoutAction:)];
+  self.navigationItem.rightBarButtonItems = @[refreshButton,logoutButton];
   
   UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                                                               target:self
