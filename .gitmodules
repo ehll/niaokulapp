@@ -1,0 +1,3 @@
+[submodule "Toast"]
+	path = Toast
+	url = git://github.com/scalessec/Toast.git

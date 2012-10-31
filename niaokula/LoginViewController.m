@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "NSDictionary+URLQuery.h"
+#import "Toast+UIView.h"
 
 static NSString * const kLoginUrl = @"https://www.niaowo.me/account/token";
 
@@ -50,7 +51,7 @@ static NSString * const kLoginUrl = @"https://www.niaowo.me/account/token";
     [self.passField becomeFirstResponder];
     return;
   }
-  
+  [self.view makeToastActivity];
   NSURL *url = [NSURL URLWithString:kLoginUrl];
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
   NSDictionary *params = @{@"api_key" : kAPIKey,@"api_secret":kAPISecret,@"username":username,@"password":pass};
@@ -70,6 +71,9 @@ static NSString * const kLoginUrl = @"https://www.niaowo.me/account/token";
                            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
                                                                                   options:NSJSONReadingAllowFragments
                                                                                     error:nil];
+                           dispatch_async(dispatch_get_main_queue(), ^(){
+                             [self.view hideToastActivity];
+                           });
                            if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
                              dispatch_async(dispatch_get_main_queue(), ^(){
                                [appDelegate showMain];

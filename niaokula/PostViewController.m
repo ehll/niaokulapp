@@ -8,6 +8,7 @@
 
 #import "PostViewController.h"
 #import "NSDictionary+URLQuery.h"
+#import "Toast+UIView.h"
 
 NSString * const kPostURL = @"https://www.niaowo.me/topics.json";
 NSString * const kReplyURL = @"https://www.niaowo.me/comments.json";
@@ -44,7 +45,7 @@ NSString * const kReplyURL = @"https://www.niaowo.me/comments.json";
   
   NSAssert(url, @"incorrect post type nil url.");
   [NSURL URLWithString:kPostURL];
-  
+  [self.view makeToastActivity];
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
   NSData *body = [[params queryString] dataUsingEncoding:NSUTF8StringEncoding];
   [request setHTTPMethod:@"POST"];
@@ -63,6 +64,9 @@ NSString * const kReplyURL = @"https://www.niaowo.me/comments.json";
                            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data
                                                                                   options:NSJSONReadingAllowFragments
                                                                                     error:nil];
+                           dispatch_async(dispatch_get_main_queue(), ^(){
+                             [self.view hideToastActivity];
+                           });
 //                           if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
                            if([httpres statusCode] == 200){
                              dispatch_async(dispatch_get_main_queue(), ^(){

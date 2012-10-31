@@ -23,6 +23,7 @@
 		873122A6163A652800812ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87312281163A652800812ECA /* Foundation.framework */; };
 		873122AE163A652800812ECA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 873122AC163A652800812ECA /* InfoPlist.strings */; };
 		873122B1163A652800812ECA /* niaokulaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 873122B0163A652800812ECA /* niaokulaTests.m */; };
+		8790AD401640EA3D004333C5 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8790AD3F1640EA3D004333C5 /* Toast+UIView.m */; };
 		879ADC2F163BAFEA000AA418 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879ADC2D163BAFEA000AA418 /* LoginViewController.m */; };
 		879ADC30163BAFEA000AA418 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879ADC2E163BAFEA000AA418 /* LoginViewController.xib */; };
 		879ADC76163BC167000AA418 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879ADC74163BC166000AA418 /* PostViewController.m */; };
@@ -66,6 +67,9 @@
 		873122AD163A652800812ECA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873122AF163A652800812ECA /* niaokulaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = niaokulaTests.h; sourceTree = "<group>"; };
 		873122B0163A652800812ECA /* niaokulaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = niaokulaTests.m; sourceTree = "<group>"; };
+		8790AD3D1640E983004333C5 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		8790AD3E1640EA3D004333C5 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Toast+UIView.h"; path = "Toast/Toast/classes/toast/Toast+UIView.h"; sourceTree = SOURCE_ROOT; };
+		8790AD3F1640EA3D004333C5 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Toast+UIView.m"; path = "Toast/Toast/classes/toast/Toast+UIView.m"; sourceTree = SOURCE_ROOT; };
 		879ADC2C163BAFEA000AA418 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		879ADC2D163BAFEA000AA418 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		879ADC2E163BAFEA000AA418 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				879ADC74163BC166000AA418 /* PostViewController.m */,
 				879ADC75163BC166000AA418 /* PostViewController.xib */,
 				87312286163A652800812ECA /* Supporting Files */,
+				8790AD3D1640E983004333C5 /* Core.h */,
 			);
 			path = niaokula;
 			sourceTree = "<group>";
@@ -194,6 +199,8 @@
 		879EEA31163F80510013700B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8790AD3E1640EA3D004333C5 /* Toast+UIView.h */,
+				8790AD3F1640EA3D004333C5 /* Toast+UIView.m */,
 				879EEA32163F80760013700B /* NSDictionary+URLQuery.h */,
 				879EEA33163F80760013700B /* NSDictionary+URLQuery.m */,
 				879EEA35163F810D0013700B /* NSString+URLEncode.h */,
@@ -323,6 +330,7 @@
 				879ADC7B163BC17F000AA418 /* TopicViewController.m in Sources */,
 				879EEA34163F80760013700B /* NSDictionary+URLQuery.m in Sources */,
 				879EEA37163F810D0013700B /* NSString+URLEncode.m in Sources */,
+				8790AD401640EA3D004333C5 /* Toast+UIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

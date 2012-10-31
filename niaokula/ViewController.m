@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "TopicViewController.h"
 #import "PostViewController.h"
+#import "Toast+UIView.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,8 @@
 
 - (void)refreshAction:(id)sender
 {
+//  [self.view makeToast:@"loading..."];
+  [self.view makeToastActivity];
   NSURL *url = [NSURL URLWithString:@"https://www.niaowo.me/topics.json"];
   NSURLRequest *request = [NSURLRequest requestWithURL:url];
   [NSURLConnection sendAsynchronousRequest:request
@@ -38,7 +41,10 @@
                                                                               error:nil];
                              self.topics = [dict objectForKey:@"topics"];
                              NSLog(@"%@",dict);
-                             dispatch_async(dispatch_get_main_queue(), ^(){ [self.tableView reloadData];});
+                             dispatch_async(dispatch_get_main_queue(), ^(){
+                               [self.tableView reloadData];
+                               [self.view hideToastActivity];
+                             });
                            }
                            else {
                              NSLog(@"data:%@",responseString);
